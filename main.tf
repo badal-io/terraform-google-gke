@@ -220,6 +220,9 @@ resource "google_container_node_pool" "pool" {
     labels          = "${var.node_pools[count.index].labels}"
     service_account = "${var.node_pools[count.index].service_account}"
     tags            = "${var.node_pools[count.index].tags}"
+    // open all scopes by default
+    // control access via IAM permissions
+    oauth_scopes    = ["cloud-platform"]
   }
 
   autoscaling {
